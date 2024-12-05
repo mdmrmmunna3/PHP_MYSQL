@@ -31,9 +31,9 @@ if (!$dbConnect) {
         #table_container,
         th,
         td {
-            border: 1px solid white;
+            border: 1px solid black;
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
 
         #table_container tr:nth-child(even) {
@@ -47,14 +47,29 @@ if (!$dbConnect) {
         #table_container th {
             padding-top: 12px;
             padding-bottom: 12px;
-            text-align: left;
+            text-align: center;
             background-color: #04AA6D;
             color: white;
+        }
+
+        .link_btn a {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background: linear-gradient(to right, red, crimson);
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.56) 0 5px 15px;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
         }
     </style>
 </head>
 
 <body>
+    <div class="link_btn">
+        <a href="insertUserInfo.php">Insert Form</a>
+    </div>
     <h1 class="record_titel">Student Records</h1>
     <table id="table_container">
         <thead>
