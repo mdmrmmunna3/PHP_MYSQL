@@ -6,6 +6,19 @@ if (!$dbConnect) {
 } else {
     echo "database connection successfully!";
 }
+
+if (isset($_GET['deleteId'])) {
+    $deletedId = $_GET['deleteId'];
+    $isDeleted = "DELETE FROM student_info WHERE id = $deletedId";
+
+    if (mysqli_query($dbConnect, $isDeleted) == true) {
+        header("location:dbConnect.php");
+        echo "User Info Suceessfully Deleted";
+        exit();
+    } else {
+        echo "Error" . mysqli_error($dbConnect);
+    }
+}
 ?>
 
 
@@ -63,12 +76,22 @@ if (!$dbConnect) {
             position: absolute;
             right: 15px;
         }
+
+        .delbtn a {
+            background-color: red;
+            padding: 4px 15px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
     <div class="link_btn">
-        <a href="insertUserInfo.php">Insert Form</a>
+        <a href="insertUserInfo.php">Insert User</a>
     </div>
     <h1 class="record_titel">Student Records</h1>
     <table id="table_container">
@@ -79,6 +102,7 @@ if (!$dbConnect) {
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Gender</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -93,6 +117,8 @@ if (!$dbConnect) {
                         <td>$email</td>
                         <td>$phone</td>
                         <td>$gender</td>
+                        <td><span class='editbtn'> <a href='editUser.php?editId=$id'>Edit</a></span></td>
+                        <td><span class='delbtn'> <a href='dbConnect.php?deleteId=$id'>Delete</a></span></td>
                     </tr>";
                 }
             } else {
