@@ -86,12 +86,22 @@ if (isset($_GET['deleteId'])) {
             cursor: pointer;
             text-decoration: none;
         }
+
+        .editbtn a {
+            background-color: blue;
+            padding: 4px 15px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
     <div class="link_btn">
-        <a href="insertUserInfo.php">Insert User</a>
+        <a href="insertStudentInfo.php">Insert User</a>
     </div>
     <h1 class="record_titel">Student Records</h1>
     <table id="table_container">
@@ -102,15 +112,16 @@ if (isset($_GET['deleteId'])) {
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Gender</th>
+                <th>Edit</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $getUserInfo = $dbConnect->query('select * from student_info');
+            $getStudentInfo = $dbConnect->query('select * from student_info');
 
-            if ($getUserInfo->num_rows > 0) {
-                while (list($id, $name, $email, $phone, $gender) = $getUserInfo->fetch_row()) {
+            if ($getStudentInfo->num_rows > 0) {
+                while (list($id, $name, $email, $phone, $gender) = $getStudentInfo->fetch_row()) {
                     echo "<tr>
                         <td>$id</td>
                         <td>$name</td>
