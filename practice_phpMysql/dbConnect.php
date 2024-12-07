@@ -13,11 +13,10 @@ if (isset($_GET['deleteId'])) {
 
     if (mysqli_query($dbConnect, $isDeleted) == true) {
         header("location:dbConnect.php");
-        echo "User Info Suceessfully Deleted";
-        exit();
     } else {
         echo "Error" . mysqli_error($dbConnect);
     }
+
 }
 ?>
 
@@ -119,11 +118,13 @@ if (isset($_GET['deleteId'])) {
         <tbody>
             <?php
             $getStudentInfo = $dbConnect->query('select * from student_info');
+            $countId = 1;
 
             if ($getStudentInfo->num_rows > 0) {
                 while (list($id, $name, $email, $phone, $gender) = $getStudentInfo->fetch_row()) {
+                    // $id = $countId++;
                     echo "<tr>
-                        <td>$id</td>
+                        <td>$countId</td>
                         <td>$name</td>
                         <td>$email</td>
                         <td>$phone</td>
@@ -131,9 +132,10 @@ if (isset($_GET['deleteId'])) {
                         <td><span class='editbtn'> <a href='editUser.php?editId=$id'>Edit</a></span></td>
                         <td><span class='delbtn'> <a href='dbConnect.php?deleteId=$id'>Delete</a></span></td>
                     </tr>";
+                    $countId++;
                 }
             } else {
-                echo "<tr><td colspan='4'>No records found</td></tr>";
+                echo "<tr><td colspan='7'>No records found</td></tr>";
             }
             ?>
         </tbody>

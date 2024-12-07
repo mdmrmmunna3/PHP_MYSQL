@@ -113,7 +113,6 @@ if (isset($_POST['insertBtn'])) {
     if (mysqli_query($dbConnect, $insertQuery)) {
         echo "User information inserted successfully!";
         header('location:dbConnect.php');
-        exit();
     } else {
         echo "Error" . mysqli_error($dbConnect);
     }
