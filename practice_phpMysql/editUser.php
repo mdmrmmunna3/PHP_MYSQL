@@ -60,20 +60,30 @@ if (isset($_GET['editId'])) {
 
         .inputBox input {
             width: 100%;
-            padding: 5px 0 5px 8px;
-            border: 2px solid green;
+            padding: 8px 0 8px 8px;
+            border: none;
             border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.56)0px 5px 15px;
+            border: 2px solid white;
         }
 
         .inputBox select {
-            width: 100%;
-            padding: 5px 0 5px 8px;
-            border: 2px solid green;
+            width: 400px;
+            padding: 8px 0 8px 8px;
+            border: none;
+            outline: none;
             border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.56)0px 5px 15px;
+        }
+
+        .inputBox input:focus {
+            border: 2px solid green;
+            outline: none;
         }
 
         .inputBox label {
             font-size: 18px;
+            padding-bottom: 5px;
         }
 
         h4 {
@@ -83,15 +93,26 @@ if (isset($_GET['editId'])) {
             text-transform: uppercase;
         }
 
+        .btn {
+            margin-top: 15px;
+        }
+
         .btn input {
             width: 100%;
             border-radius: 5px;
             border: none;
             outline: none;
             padding: 10px 0;
-            background-color: green;
+            background-color: #089808;
             color: white;
             cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .btn input:hover {
+            background-color: green;
         }
 
         h3 {
