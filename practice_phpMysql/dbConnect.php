@@ -17,6 +17,11 @@ if (isset($_GET['deleteId'])) {
         echo "Error" . mysqli_error($dbConnect);
     }
 
+    // $deleteInfo = $dbConnect->query("call delete_info('$deletedId')");
+    // if ($deleteInfo) {
+    //     header("location:dbConnect.php");
+    // }
+
 }
 ?>
 

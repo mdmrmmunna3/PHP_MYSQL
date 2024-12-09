@@ -13,29 +13,37 @@ if (isset($_GET['editId'])) {
     $phone = $studentData['phone'];
     $gender = $studentData['gender'];
 
-    if (isset($_POST['editBtn'])) {
-        $editName = $_POST['name'];
-        $editEmail = $_POST['email'];
-        $editPhone = $_POST['phone'];
-        $editGender = $_POST['gender'];
-        // echo $editName, $editEmail, $editPhone, $editGender;
+}
 
-        $updateInfo = "UPDATE student_info SET name = '$editName', email = '$editEmail', phone = '$editPhone', gender = '$editGender' where id = '$editedId' ";
+if (isset($_POST['editBtn'])) {
+    $editName = $_POST['name'];
+    $editEmail = $_POST['email'];
+    $editPhone = $_POST['phone'];
+    $editGender = $_POST['gender'];
+    // echo $editName, $editEmail, $editPhone, $editGender;
 
-        if (mysqli_query($dbConnect, $updateInfo)) {
-            header("location:dbConnect.php");
-            echo "Student Info Updated!";
-        } else {
-            echo "Error" . mysqli_error($dbConnect);
-        }
+    $updateInfo = "UPDATE student_info SET name = '$editName', email = '$editEmail', phone = '$editPhone', gender = '$editGender' where id = '$editedId' ";
 
-        // $updateStudentInfo = $dbConnect->query("call update_info('$editName', '$editEmail', '$editPhone', '$editGender')");
-    
-        // if($updateStudentInfo) {
-        //     header("location:dbConnect.php");
-        // }
-
+    if (mysqli_query($dbConnect, $updateInfo)) {
+        header("location:dbConnect.php");
+        echo "Student Info Updated!";
+    } else {
+        echo "Error" . mysqli_error($dbConnect);
     }
+
+    // procedul way : todo
+    // $updateStudentInfo = $dbConnect->query("call update_info('$editName', '$editEmail', '$editPhone', '$editGender', '$editedId')");
+    // if ($updateStudentInfo) {
+    //     header("location:dbConnect.php");
+    // }
+
+    // $updateInfo = "CALL update_info('$editName', '$editEmail', '$editPhone', '$editGender', $editedId)";
+    // if (mysqli_query($dbConnect, $updateInfo)) {
+    //     header("location:dbConnect.php");
+    // } else {
+    //     echo "Error: " . mysqli_error($dbConnect);
+    // }
+
 
 }
 
