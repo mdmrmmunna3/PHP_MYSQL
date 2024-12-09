@@ -29,6 +29,12 @@ if (isset($_GET['editId'])) {
             echo "Error" . mysqli_error($dbConnect);
         }
 
+        // $updateStudentInfo = $dbConnect->query("call update_info('$editName', '$editEmail', '$editPhone', '$editGender')");
+    
+        // if($updateStudentInfo) {
+        //     header("location:dbConnect.php");
+        // }
+
     }
 
 }

@@ -130,14 +130,22 @@ if (isset($_POST['insertBtn'])) {
     $phone = $_POST['phone'];
     $gender = $_POST['gender'];
 
-    $insertQuery = "INSERT INTO student_info (name, email, phone, gender) 
-                    VALUES ('$name', '$email', '$phone', '$gender')";
-    if (mysqli_query($dbConnect, $insertQuery)) {
-        echo "User information inserted successfully!";
-        header('location:dbConnect.php');
-    } else {
-        echo "Error" . mysqli_error($dbConnect);
+    // $insertQuery = "INSERT INTO student_info (name, email, phone, gender) 
+    //                 VALUES ('$name', '$email', '$phone', '$gender')";
+    // if (mysqli_query($dbConnect, $insertQuery)) {
+    //     echo "User information inserted successfully!";
+    //     header('location:dbConnect.php');
+    // } else {
+    //     echo "Error" . mysqli_error($dbConnect);
+    // }
+
+    // procuduel way 
+    $insertStudentInfo = $dbConnect->query("call insert_student('$name', '$email', '$phone', '$gender')");
+    
+    if($insertStudentInfo) {
+        header("location:dbConnect.php");
     }
+
 }
 
 
