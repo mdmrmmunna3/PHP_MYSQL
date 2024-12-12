@@ -77,4 +77,12 @@ if(isset($_POST['insertBtn'])) {
     $insertBrand = $dbConnect->query("call insert_brand('$brandName', '$contact')");
 }
 
+
+if(isset($_POST['addBtn'])) {
+    $prName = $_POST['name'];
+    $brandName = $_POST['brandName'];
+    $price = $_POST['price'];
+
+    $insertProduct = $dbConnect->query("call add_products('$prName', '$brandName', '$price')");
+}
 ?>
