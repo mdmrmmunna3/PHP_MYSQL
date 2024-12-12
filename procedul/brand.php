@@ -46,7 +46,7 @@
                 <label for="brandName">BrandName</label>
                 <select name="brandName" id="brandName">
                 <?php
-                        $dbConnect =mysqli_connect('localhost','root','','products');
+                        require_once('dbRootPath.php');
                         $manuFac = $dbConnect->query(('select * from brand_info'));
                         while(list($brId,$brName) = $manuFac->fetch_row()) {
                             echo "<option value='$brId'>$brName</option>";
@@ -57,7 +57,7 @@
             
 
             <div class="btn">
-                <input type="submit" value="Insert" name="insertBtn">
+                <input type="submit" value="addBtn" name="addBtn">
             </div>
         </form>
     </section>
