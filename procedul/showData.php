@@ -55,6 +55,8 @@
                 
                 ";
             }
+        }else {
+            echo "No data found";
         }
         
        

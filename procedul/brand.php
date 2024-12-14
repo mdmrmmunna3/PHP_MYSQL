@@ -18,6 +18,10 @@
                     <option value="samsung">samsung</option>
                     <option value="apple">Apple</option>
                     <option value="vivo">Vivo</option>
+                    <option value="oppp">Oppo</option>
+                    <option value="sony">Sony</option>
+                    <option value="huyai">huyai</option>
+                    <option value="infinix">Infinix</option>
                 </select>
             </div>
             <div class="inputBox">
@@ -75,6 +79,8 @@ if(isset($_POST['insertBtn'])) {
     var_dump ($brandName, $contact);
 
     $insertBrand = $dbConnect->query("call insert_brand('$brandName', '$contact')");
+    header("Location:" . $_SERVER["PHP_SELF"]);
+    exit;
 }
 
 
@@ -84,5 +90,7 @@ if(isset($_POST['addBtn'])) {
     $price = $_POST['price'];
 
     $insertProduct = $dbConnect->query("call add_products('$prName', '$brandName', '$price')");
+    header("Location:" . $_SERVER["PHP_SELF"]);
+    exit;
 }
 ?>
