@@ -65,6 +65,28 @@
             </div>
         </form>
     </section>
+
+    <br><br><br>
+    <section>
+            <form action="" method="post">
+                <div class="inputBox">
+                    <label for="brand">BrandName</label>
+                    <select name="brand" id="brand">
+                        <?php
+                                require_once('dbRootPath.php');
+                                $manuFac = $dbConnect->query(('select * from brand_info'));
+                                while(list($brId,$brName) = $manuFac->fetch_row()) {
+                                    echo "<option value='$brId'>$brName</option>";
+                                }
+                            ?>
+                    </select>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="delete" name="delBtn">
+                </div>
+            </form>
+    </section>
+
 </body>
 </html>
 
@@ -83,7 +105,7 @@ if(isset($_POST['insertBtn'])) {
     exit;
 }
 
-
+// add product 
 if(isset($_POST['addBtn'])) {
     $prName = $_POST['name'];
     $brandName = $_POST['brandName'];
@@ -93,4 +115,15 @@ if(isset($_POST['addBtn'])) {
     header("Location:" . $_SERVER["PHP_SELF"]);
     exit;
 }
+
+// del info 
+
+if(isset($_POST['delBtn'])) {
+    $brId = $_POST['brand'];
+    $delete = $dbConnect->query("delete from products_info where id = '$brId'");
+
+    // header("location: showData.php");
+ 
+}
+
 ?>
