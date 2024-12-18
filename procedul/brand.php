@@ -11,7 +11,7 @@
             
             <div class="inputBox">
                 <label for="brand">BrandName</label>
-                <select name="brand" id="brand">
+                <!-- <select name="brand" id="brand">
                     <option value="" select="selected">Select Brand</option>
                     <option value="walton">Walton</option>
                     <option value="redmi">Redmi</option>
@@ -22,7 +22,8 @@
                     <option value="sony">Sony</option>
                     <option value="huyai">huyai</option>
                     <option value="infinix">Infinix</option>
-                </select>
+                </select> -->
+                <input type="text" name="brand" id="brand">
             </div>
             <div class="inputBox">
                 <label for="contact">Contact</label>
@@ -50,7 +51,7 @@
                 <label for="brandName">BrandName</label>
                 <select name="brandName" id="brandName">
                 <?php
-                        require_once('dbRootPath.php');
+                        require_once 'dbRootPath.php';
                         $manuFac = $dbConnect->query(('select * from brand_info'));
                         while(list($brId,$brName) = $manuFac->fetch_row()) {
                             echo "<option value='$brId'>$brName</option>";
@@ -71,7 +72,7 @@
             <form action="" method="post">
                 <div class="inputBox">
                     <label for="brand">BrandName</label>
-                    <select name="brand" id="brand">
+                    <select name="brand1" id="brand">
                         <?php
                                 require_once('dbRootPath.php');
                                 $manuFac = $dbConnect->query(('select * from brand_info'));
@@ -108,10 +109,10 @@ if(isset($_POST['insertBtn'])) {
 // add product 
 if(isset($_POST['addBtn'])) {
     $prName = $_POST['name'];
-    $brandName = $_POST['brandName'];
+    $brandId = $_POST['brandName'];
     $price = $_POST['price'];
 
-    $insertProduct = $dbConnect->query("call add_products('$prName', '$brandName', '$price')");
+    $insertProduct = $dbConnect->query("call add_products('$prName', '$price', '$brandId')");
     header("Location:" . $_SERVER["PHP_SELF"]);
     exit;
 }
@@ -119,11 +120,10 @@ if(isset($_POST['addBtn'])) {
 // del info 
 
 if(isset($_POST['delBtn'])) {
-    $brId = $_POST['brand'];
-    $delete = $dbConnect->query("delete from products_info where id = '$brId'");
-
-    // header("location: showData.php");
- 
+    $brId = $_POST['brand1'];
+    $dbConnect->query("delete from brand_info where id = $brId ");
+    $dbConnect->query("delete from product where id = $brId");
 }
+
 
 ?>
