@@ -66,7 +66,3 @@
     </table>
 </body>
 </html>
-
-    </section>
-</body>
-</html>
