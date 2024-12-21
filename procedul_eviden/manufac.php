@@ -21,6 +21,7 @@ if(isset($_POST['productBtn'])) {
 
     $insertManufac = $db_root->query("call products('$pro_name', '$pro_price', '$manu_id')");
     header("Location:" . $_SERVER["PHP_SELF"]);
+    // header("Location: price_under.php");
     exit;
 
 }
@@ -215,8 +216,9 @@ if(isset($_POST['delBtn'])) {
         </form>
     </section>
 
-    <section>
+    <section style="margin-top: 20px;">
     <table>
+        <caption style="font-size: 20px;">Show Products Data</caption>
         <?php 
 
         $pro_view = $db_root->query('select * from products_details');
@@ -231,7 +233,7 @@ if(isset($_POST['delBtn'])) {
         ";
 
         if($pro_view->num_rows > 0) {
-            while(list( $pro_name, $pro_price, $brand_name, $brand_address, $brand_contact) = $pro_view->fetch_row()) {
+            while(list( $pro_name, $pro_price, , $brand_name, $brand_address, $brand_contact) = $pro_view->fetch_row()) {
                 echo"
                 <tr>
                 <td>$pro_name</td>
