@@ -33,17 +33,21 @@
         echo "<tr>
         <th>Procuct Name</th>
         <th>Price</th>
-        <th>Brand Id</th>
+        <th>Brand Name</th>
+        <th>Brand Address</th>
+        <th>Contact</th>
         </tr>
         ";
 
         if($pro_view->num_rows > 0) {
-            while(list( $pro_name, $pro_price, $brand_name) = $pro_view->fetch_row()) {
+            while(list( $pro_name, $pro_price, , $brand_name, $brand_address, $brand_contact) = $pro_view->fetch_row()) {
                 echo"
                 <tr>
+                <td>$pro_name</td>
                 <td>$pro_price</td>
                 <td>$brand_name</td>
-                <td>$pro_name</td>
+                <td>$brand_address</td>
+                <td>$brand_contact</td>
             </tr>
                 
                 ";

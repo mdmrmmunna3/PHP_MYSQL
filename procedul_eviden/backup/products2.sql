@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2024 at 06:03 AM
+-- Generation Time: Dec 21, 2024 at 08:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,6 +38,21 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `display_product`
+-- (See below for the actual view)
+--
+CREATE TABLE `display_product` (
+`pro_name` varchar(50)
+,`price` int(5)
+,`manufacture_id` int(11)
+,`name` varchar(50)
+,`address` varchar(100)
+,`contact` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `manufacture`
 --
 
@@ -55,7 +70,8 @@ CREATE TABLE `manufacture` (
 INSERT INTO `manufacture` (`id`, `name`, `address`, `contact`) VALUES
 (1, 'Redmi', 'Agargoan,Super Market', '01421464521'),
 (3, 'samsung', 'Shymoli Squre', '0101454741'),
-(4, 'Infinix', 'Amar bazar', '012478562');
+(4, 'Infinix', 'Amar bazar', '012478562'),
+(5, 'nokia', 'bangaldesh', '0145247');
 
 --
 -- Triggers `manufacture`
@@ -89,7 +105,10 @@ INSERT INTO `product` (`id`, `name`, `price`, `manufacture_id`) VALUES
 (2, 'redmi 14 pro ', 45000, 1),
 (4, 'samsung ultra', 2000, 3),
 (5, 'samsung ultra2', 4900, 3),
-(6, 'infinix 140', 5001, 4);
+(6, 'infinix 140', 5001, 4),
+(7, 'samsung ultra', 5000, 3),
+(8, 'iphone 14 pro', 2000, 4),
+(9, 'nokia 11', 7000, 5);
 
 -- --------------------------------------------------------
 
@@ -105,6 +124,15 @@ CREATE TABLE `products_details` (
 ,`address` varchar(100)
 ,`contact` varchar(50)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `display_product`
+--
+DROP TABLE IF EXISTS `display_product`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `display_product`  AS SELECT `products_details`.`pro_name` AS `pro_name`, `products_details`.`price` AS `price`, `products_details`.`manufacture_id` AS `manufacture_id`, `products_details`.`name` AS `name`, `products_details`.`address` AS `address`, `products_details`.`contact` AS `contact` FROM `products_details` WHERE `products_details`.`price` > 5000 ORDER BY `products_details`.`name` ASC ;
 
 -- --------------------------------------------------------
 
@@ -139,13 +167,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `manufacture`
 --
 ALTER TABLE `manufacture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
