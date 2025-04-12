@@ -19,7 +19,7 @@ if (isset($_POST['insertBtn'])) {
     $stmt->bind_param('sss', $name, $email, $contact);
     $stmt->execute();
     header('location: display.php');
-    echo "User added successfully!";
+    echo "User Added successfully!";
 }
 
 ?>
